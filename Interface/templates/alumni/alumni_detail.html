@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+Alumni Detail
+{% endblock title %}
+
+
+
+
+{% block content %}
+  
+<ul>
+
+    <h1>{{ object.Name }}<h1>
+    
+    {% if object.Profile_image%}
+        <img src="{{ object.Profile_image.url }}" alt="Profile_Photo" style="height: 10%;width: 20%;">
+    {% endif %}
+    
+    <h3> {{ object.Email.email}}</h3>
+    
+    <h3> {{ object.Gender}}</h3>
+    
+    <h3> {{ object.Birthdate}}</h3>
+    
+    <h3> {{ object.Address}}</h3>
+    
+    <h3> {{ object.Course}}</h3>
+    
+    <h3> {{ object.Branch}}</h3>
+    
+    <h3> {{ object.BatchYear}}</h3>
+    
+    </ul>
+    
+
+{% endblock content %}
+
+
+
+
+
+

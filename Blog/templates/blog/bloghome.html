@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'style/blog_home.css' %}">
+  
+{% endblock css %}
+
+{% block title %}
+Blog
+{% endblock title %}
+
+
+{% block content %}
+    
+<!-- Wrapper -->
+<div id="wrapper">
+  
+    <div id="main">
+
+      <!-- Post -->
+      {% for post in post_list %}
+
+        <article class="post">
+          <header>
+            <div class="title">
+              <h2><a href="{% url 'blog_post_detail' post.slug  %}">{{ post.title}}</a></h2>
+            </div>
+            <div class="meta">
+              <time class="published">{{ post.created_on }}</time>
+              <p class="author"><span class="name">{{ post.author }}</span></p>
+            </div>
+          </header>
+          <a href="{% url 'blog_post_detail' post.slug  %}" class="image featured"><img src="{{ post.image.url }}" alt="Blog Image" /></a>
+          <p>{{post.content|slice:":200" }}</p>
+          <footer>
+            <ul class="actions">
+              <li><a href="{% url 'blog_post_detail' post.slug  %}" class="button large">Continue Reading</a></li>
+              <li><a href="{% url 'blog_update' post.slug  %}" class="button large">Update Blog</a></li>
+            </ul>
+            <!-- <ul class="stats">
+              <li><a href="#" class="icon solid fa-heart">28</a></li>
+              <li><a href="#" class="icon solid fa-comment">128</a></li>
+            </ul> -->
+          </footer>
+        </article>
+      {% endfor %}
+      
+        {% if is_paginated %}
+        <nav aria-label="Page navigation conatiner"></nav>
+          <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+          </ul>
+        </nav>
+
+{% endif %}
+
+
+    </div>
+
+  <!-- Sidebar -->
+    <section id="sidebar">
+
+      <!-- Intro -->
+        <section id="intro">
+          <header>
+            <h2>Most Liked Blogs</h2>
+          </header>
+        </section>
+
+      <!-- Mini Posts -->
+      {% for post in post_list %}
+
+        <section>
+          <div class="mini-posts">
+
+            <!-- Mini Post -->
+              <article class="mini-post">
+                <header>
+                  <h3><a href="{% url 'blog_post_detail' post.slug  %}">{{ post.title}}</a></h3>
+                  <time class="published" datetime="2015-10-20">{{ post.created_on}}</time>
+                  <a href="#" class="author">{{ post.author}}</a>
+                </header>
+                <a href="{% url 'blog_post_detail' post.slug  %}" class="image"><img src="{{ post.image.url }}" alt="" /></a>
+              </article>
+          </div>
+        </section>
+      {% endfor %}
+
+    </section>
+</div>
+
+{% endblock content %}

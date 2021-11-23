@@ -1,0 +1,43 @@
+{% extends "basic.html" %}
+{% block title %}
+Alumni Directory
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+  <main id="main">
+    <section class="inner-page">
+      <div class="container my-3 py-5 text-center">
+        <div class="row mb-5">
+          <div class="col">
+            <h1><span style="color: rgb(62,166,0);">Our Alumni</span></h1>
+          </div>
+
+          <div class="row">
+
+            {% for x in object_list %}
+
+            <div class="col-lg-3 col-md-6">
+              <div class="card shadow p-3 border border-success">
+                <div class="card-body">
+                  <a href="{% url 'alumniprofile'  x.pk %}"><img src="{{ x.Profile_image.url }}" alt="" class="image-fluid rounded-circle w-50 mb-3"></a>
+                  <h4>{{ x.Name }}</h3>
+                  <h6>Designation </h5>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+
+{% endblock content %}

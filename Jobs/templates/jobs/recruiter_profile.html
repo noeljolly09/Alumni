@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+Recruiter  Profile
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+    <img src="{{recruiter.image.url}}" alt="" width="200px" height="200px">
+    <br>
+    <h1>{{recruiter.user.first_name}}</h1>
+    <br>
+    <h1>{{recruiter.user.last_name}}</h1>
+    <br>
+    <h1>{{recruiter.user.email}}</h1>
+    <br>
+    <h1> {{recruiter.phone}}</h1>
+    <br>
+    <h1>{{recruiter.gender}}</h1>
+
+
+<a href="{% url 'recruiter_update_profile' %}">Update Profile</a>
+<br>
+<br>
+<a href="{% url 'recruiter_job_add' %}">Add Job</a>
+<br>
+<br>
+<a href="{%url 'recruiter_job_list'%}">Jobs List</a>
+<br><br>
+<a href="{% url 'recruiter_applied_applicants'%}">Applied Applicants</a>
+
+{% endblock content %}
+
+
+

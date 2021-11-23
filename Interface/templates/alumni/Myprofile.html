@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+My profile
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+{% for p in data %}
+
+<h1>{{p.Name}}</h1>
+<h1>{{p.Email.email}}</h1>
+<h1>{{p.Course}}</h1>
+<h1>{{p.Branch}}</h1>
+<h1>{{p.BatchYear}}</h1>
+
+<a class="btn-primary" href={% url 'updateprofile'  p.id %}>Edit</a>
+
+{% endfor %}
+
+{% endblock content %}
+

@@ -1,0 +1,139 @@
+
+
+{% if user.is_authenticated %}
+
+  {% if user.is_superuser %}
+
+   <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link" href="{% url 'homepage' %}">Home</a></li>
+
+              <li><a class="nav-link" href="#about">About</a></li>
+
+              <li class="dropdown"><a href="#why-us"><span>Events</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="#">Add Events</a></li> 
+                </ul>
+              </li> 
+
+              <li class="dropdown"><a href="{% url 'gallery' %}"><span>Gallery</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="{% url 'gallery_add' %}">Add Gallery Images</a></li> 
+                </ul>
+              </li> 
+
+              <li class="dropdown"><a href="{% url 'alumnidirectory' %}"><span>Alumni Directory</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="{% url 'alumniadd' %}">Add Alumni</a></li> 
+                </ul>
+              </li> 
+
+
+              <li class="dropdown"><a href="{% url 'blog_home' %}"><span>Blogs</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="{% url 'blog_add' %}">Add Blogs</a></li> 
+                </ul>
+              </li> 
+             
+              <li><a class="nav-link " href="#contact">Contact</a></li>
+              
+              <li> <a class="nav-link" >Hello {{ user }} </a></li>
+              
+              <li><a class="getstarted" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+  {% elif user.is_staff %}
+
+        <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link" href="{% url 'homepage' %}">Home</a></li>
+
+              <li><a class="nav-link" href="#about">About</a></li>
+
+              <li class="dropdown"><a href="#why-us"><span>Events</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="#">Add Events</a></li> 
+                </ul>
+              </li> 
+
+              <li class="dropdown"><a href="{% url 'gallery' %}"><span>Gallery</span><i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="{% url 'gallery_add' %}">Add Gallery Images</a></li> 
+                </ul>
+              </li> 
+
+              <li><a class="nav-link" href="{% url 'alumnidirectory' %}">Alumni Directory</a></li>
+
+              <li><a class="nav-link" href="{% url 'jobs_homepage' %}">Job Opportunities </a></li>
+              
+
+              <li><a class="nav-link" href="{% url 'blog_home' %}">Blogs</a></li>
+
+              <li><a class="nav-link " href="#contact">Contact</a></li>
+              
+              <li> <a class="nav-link" >Hello {{ user }} </a></li>
+              
+              <li><a class="getstarted" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+
+  {% else %} <!-- Anonymous User-->>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link" href="{% url 'homepage' %}">Home</a></li>
+
+              <li><a class="nav-link" href="#about">About</a></li>
+
+              <li><a class="nav-link" href="#services">Services</a></li>
+
+              <li><a class="nav-link " href="{% url 'gallery' %}">Gallery</a></li>
+
+              <li><a class="nav-link" href="{% url 'alumnidirectory' %}">Alumni Directory</a></li>
+              
+              <li><a class="nav-link" href="{% url 'blog_home' %}">Blogs</a></li>
+
+              <li><a class="nav-link" href="{% url 'jobs_homepage' %}">Job Opportunities </a></li>
+             
+              <li><a class="nav-link " href="#contact">Contact</a></li>
+              
+              <li> <a class="nav-link" >Hello {{ user }} </a></li>
+              
+              <li><a class="getstarted" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+  {% endif %} 
+
+{% else %}
+
+
+ <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+
+          <li><a class="nav-link scrollto" href="#why-us">Events</a></li>
+
+          <li><a class="nav-link scrollto " href="#portfolio">Gallery</a></li>
+
+          <li><a class="nav-link scrollto" href="#team">Alumni Directory</a></li>
+
+          <li><a class="nav-link scrollto" href="#pricing"> Blogs</a></li>
+
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
+          <li><a class="getstarted scrollto" href="{% url 'login' %}"> Login</a></li>
+        </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+</nav><!-- .navbar --> 
+
+
+{% endif %}
+
+

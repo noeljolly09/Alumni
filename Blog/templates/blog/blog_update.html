@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+Update Blog
+{% endblock title %}
+
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'style/basic_form.css' %}"> 
+
+{% endblock css %}
+
+{% block content %}
+    
+<div class="testbox"></div>
+<form method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+
+    <div class="colums">
+        <div class="item">
+        <label> Title<span>*</span></label>
+        {{form.title}}
+        </div>
+
+        <div class="item">
+        <label>Profile image:</label>
+        {{form.image}}
+        </div>
+
+        <div class="item">
+        <label> Content<span>*</span></label>
+        {{form.content}}
+        </div>
+
+        <div class="item">
+        <label> Author<span>*</span></label>
+        {{form.author}}
+        </div>
+
+        <div class="item">
+        <label>Status<span>*</span></label>
+        {{form.status}}
+        </div>
+
+    </div>
+  
+    <div class="btn-block">
+        <button type="submit">Save</button>
+    </div>
+</form>
+</div>
+</form>
+
+
+{% endblock content %}

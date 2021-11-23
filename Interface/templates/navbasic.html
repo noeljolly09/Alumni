@@ -1,0 +1,71 @@
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="navbar-collapse">
+            <ul class="navbar-nav d-inline ">
+
+                {% if user.is_authenticated%}
+
+                    <li class="nav-item p-4">
+                        <a class="nav-link"  href="{% url 'homepage' %}">Home</a>
+                    </li>
+                    <li class="nav-item p-4">
+                        <a class="nav-link" href="{% url 'blog_home' %}">Blog</a>
+                    </li>
+
+                    <li class="nav-item p-4">
+                      <a class="nav-link" href="{% url 'blog_add' %}">Blog add</a>
+                    </li>
+                    <li class="nav-item p-4">
+                        <a class="nav-link" href="#">Events</a>
+                    </li>
+                    <li class="nav-item p-4">
+                      <a class="nav-link" href="{% url 'userprofile' %}">User Profile</a>
+                  </li>
+                    <li class="nav-item p-4">
+                        <a class="nav-link" href="{% url 'alumnidirectory' %}">Alumni Directory</a>
+                    </li>
+
+                    {% if user.is_staff %}
+
+                    <li class="nav-item p-4">
+                      <a class="nav-link" href="{% url 'alumniadd' %}">Alumni add</a>
+                  </li>
+
+                    {% endif %}
+                    <li class="nav-item p-4">
+                        <a class="nav-link" href="#">Chat forum</a>
+                    </li>
+                    <li class="nav-item p-4">
+                      <a class="nav-link" href="{% url 'jobs_homepage' %}">Job Opportunities</a>
+                  </li>
+
+                    <li class="nav-item p-4">
+                      <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+                    </li>
+
+                    {% if user.is_staff %}
+
+                    <li class="nav-item p-4">
+                      <a class="nav-link" href="{% url 'gallery_add' %}">Gallery add</a>
+                   </li>
+                   
+                    {% endif %}
+                    <li class="nav-item p-4">
+                        <a class="nav-link " href="{% url 'logout' %}">Logout</a>
+                    </li>
+    
+                    {% else %}
+                    
+                    <li class="nav-item p-4">
+                        <a class="nav-link " href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item p-4">
+                        <a class="nav-link " href="{% url 'register' %}">Register</a>
+                    </li>
+    
+                    {% endif %}
+            </ul>
+          </div>
+        </div>
+    </nav>

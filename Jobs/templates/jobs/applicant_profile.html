@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+Applicant Profile
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+    <img src="{{applicant.image.url}}" alt="" width="200px" height="200px">
+    <br>
+    <h1>{{applicant.user.first_name}}</h1>
+    <br>
+    <h1>{{applicant.user.last_name}}</h1>
+    <br>
+    <h1>{{applicant.user.email}}</h1>
+    <br>
+    <h1> {{applicant.phone}}</h1>
+    <br>
+    <h1>{{applicant.gender}}</h1>
+
+
+<a href="{% url 'applicant_update_profile' %}">Update Profile</a>
+<br><br>
+<a href="{% url 'applicant_available_jobs'%}">Available Jobs</a>
+
+{% endblock content %}
+
+
+

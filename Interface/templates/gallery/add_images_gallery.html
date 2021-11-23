@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Add Gallery Images
+{% endblock title %}
+
+
+{% block css %}
+  
+<link rel="stylesheet" href="{% static 'style/basic_form.css' %}"> 
+
+{% endblock css %}
+
+
+
+
+{% block content %}
+
+
+<div class="testbox"></div>
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+    
+            <div class="colums">
+                <div class="item">
+                <label>Title<span>*</span></label>
+                {{form.title}}
+                </div>
+                
+                <div class="item">
+                <label>Image:</label>
+                {{form.image}}
+                </div>
+
+            </div>
+          
+            <div class="btn-block">
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</form>
+
+
+{% endblock content %}

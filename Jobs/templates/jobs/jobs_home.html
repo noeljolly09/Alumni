@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+Job Opportunities
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+
+
+<div class="container mt-4">
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Company Name</th>
+                <th>Job Title</th>
+                <th>Salary</th>
+                <th>Location</th>
+                <th>Created On</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{job.company.company_name}}</td>
+            <td>{{job.title}}</td>
+            <td>{{job.salary}}</td>
+            <td>{{job.location}}</td>
+            <td>{{job.creation_date}}</td>
+        </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+    <!-- <a href="{% url 'applicant_profile' %}">Already an applicant</a> -->
+    <br>
+    <a href="{% url 'applicant_signup' %}">Become an Applicant</a>
+    <br>
+    <br>
+    <a href="{% url 'recruiter_signup' %}">Become a Recruiter</a>
+    <br>
+    <!-- <a href="{% url 'recruiter_profile' %}">Already a Recruiter</a> -->
+    
+</div>
+
+
+
+
+
+{% endblock content %}

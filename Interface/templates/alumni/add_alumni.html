@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Add Alumni
+{% endblock title %}
+
+
+{% block css %}
+  
+<link rel="stylesheet" href="{% static 'style/basic_form.css' %}"> 
+
+{% endblock css %}
+
+{% block content %}
+
+<div class="testbox"></div>
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+    
+            <div class="colums">
+                <div class="item">
+                <label> Name<span>*</span></label>
+                {{form.Name}}
+                </div>
+                
+                <div class="item">
+                <label>Profile image:</label>
+                {{form.Profile_image}}
+                </div>
+
+                <div class="item">
+                <label> Email<span>*</span></label>
+                {{form.Email}}
+                </div>
+                
+
+                <div class="item">
+                <label> Gender<span>*</span></label>
+                {{form.Gender}}
+                </div>
+
+
+                <div class="item">
+                <label> Birthdate<span>*(yyyy/mm/dd)</span></label>
+                {{form.Birthdate}}
+                </div>
+
+                <div class="item">
+                <label> Address<span>*</span></label>
+                {{form.Address}}
+                </div>
+
+                <div class="item">
+                <label> Course<span>*</span></label>
+                {{form.Course}}
+                </div>
+        
+                <div class="item">
+                <label>Branch<span>*</span></label>
+                {{form.Branch}}
+                </div>
+                
+                <div class="item">
+                <label>Batch Year<span>*</span></label>
+                {{form.BatchYear}}
+                </div>
+
+            </div>
+          
+            <div class="btn-block">
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</form>
+
+{% endblock content %}

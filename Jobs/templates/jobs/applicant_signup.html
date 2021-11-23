@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+Applicant Signup
+{% endblock title %}
+
+
+
+
+{% block content %}
+  
+<form method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    
+    <div>
+        <label>Contact Number</label>
+        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Enter Contact Number">
+    </div>
+        <div>
+            <label>Gender</label>
+            <div style="border: 1px solid lightgrey; padding: 5px; border-radius: 6px;">
+            <div class="form-check form-check-inline">
+                <input type="radio" class="custom-control-input" name="gender" id="male" value="Male">
+                <label for="male" class="custom-control-label">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="custom-control-input" name="gender" id="female" value="Female">
+                <label for="female" class="custom-control-label">Female</label>
+            </div>
+        </div>
+    <div>
+        <label>Profile Picture</label>
+        <input type="file" class="form-control" name="image" id="image">
+    </div>
+
+    <button>Save</button>
+
+</form>
+
+{% endblock content %}

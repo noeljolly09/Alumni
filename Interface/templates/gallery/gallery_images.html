@@ -1,0 +1,50 @@
+{% extends "basic.html" %}
+
+
+{% block title %}
+Gallery Images
+{% endblock title %}
+
+
+
+{% block content %}
+
+
+ <main id="main">
+
+    
+
+    <section class="inner-page">
+      <div class="container">
+        
+        <section class="mt-5 pt-5">
+          <div class="col text-center">
+            <h1><span style="color: rgb(62,166,0);">Gallery</span></h1>
+          </div>
+          <div class="container">
+            <div class="col-xl-12">
+              <div class="row">
+
+                {% for x in object_list %}
+
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                  <div class="card gallery-card rounded">
+                    <div class="card-common">
+                      <img class="img-fluid" src="{{ x.image.url }}">
+                    </div>
+                  </div>
+                </div>
+
+                {% endfor %}
+              </div>
+              
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock content %}
+
