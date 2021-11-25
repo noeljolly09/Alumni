@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "basic.html" %}
 {% load static %}
 
 {% block title %}
@@ -6,43 +6,65 @@ Add Gallery Images
 {% endblock title %}
 
 
-{% block css %}
-  
-<link rel="stylesheet" href="{% static 'style/basic_form.css' %}"> 
-
-{% endblock css %}
-
 
 
 
 {% block content %}
 
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
 
-<div class="testbox"></div>
-        <form method="POST" enctype="multipart/form-data">
-
-            {% csrf_token %}
-
-    
-            <div class="colums">
-                <div class="item">
-                <label>Title<span>*</span></label>
-                {{form.title}}
-                </div>
-                
-                <div class="item">
-                <label>Image:</label>
-                {{form.image}}
-                </div>
-
-            </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Upload Image </h2>
+          <ol>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li>Upload Image</li>
+          </ol>
           
-            <div class="btn-block">
-                <button type="submit">Save</button>
-            </div>
-        </form>
-    </div>
-</form>
+        </div>
 
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+         <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+              <div class="card-heading"></div>
+
+                <div class="card-body">
+                    <h2 class="title">Upload Image</h2>
+                    <form method="POST" enctype="multipart/form-data">
+                     {% csrf_token %}
+ 
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="input--style-2">Title<span>*</span></label>
+                                    {{form.title}}
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="input--style-2">Image<span>*</span></label>
+                                    {{form.image}}
+                                </div>
+                            </div>
+                            <div class="p-t-30">
+                                <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                            </div>
+                        </div>
+
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </section>
 
 {% endblock content %}

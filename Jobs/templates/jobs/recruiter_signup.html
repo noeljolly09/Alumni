@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "basic.html" %}
 
 {% block title %}
 Recruiter Signup
@@ -8,38 +8,77 @@ Recruiter Signup
 
 
 {% block content %}
-  
-<form method="POST" enctype="multipart/form-data">
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
 
-    {% csrf_token %}
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Recruiter Signup Form</h2>
+          
+        </div>
 
-    <div>
-        <label>Company Name</label>
-        <input type="text" class="form-control" name="company_name" id="company_name" placeholder="Enter Company Name">
-    </div>
-    <div>
-        <label>Contact Number</label>
-        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Enter Contact Number">
-    </div>
-        <div>
-            <label>Gender</label>
-            <div style="border: 1px solid lightgrey; padding: 5px; border-radius: 6px;">
-            <div class="form-check form-check-inline">
-                <input type="radio" class="custom-control-input" name="gender" id="male" value="Male">
-                <label for="male" class="custom-control-label">Male</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input type="radio" class="custom-control-input" name="gender" id="female" value="Female">
-                <label for="female" class="custom-control-label">Female</label>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+         <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+              <div class="card-heading"></div>
+
+                <div class="card-body">
+                    <h2 class="title">Recruiter Signup Form</h2>
+                    <form method="POST" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Username<span>*</span></label>
+                            <input class="input--style-2" type="text"  name="username">
+                        </div>
+
+
+                        <div class="col-2">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <label for="gender"class="input--style-2"> Gender</label>
+                                    <select id="gender" name="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Company Name<span>*</span></label>
+                            <input class="input--style-2" type="text"  name="company_name">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Phone Number<span>*</span></label>
+                            <input class="input--style-2" type="text"  name="phone">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Company Logo<span>*</span></label>
+                            <input class="input--style-2" type="file"  name="company_logo">
+                        </div>
+                        
+                                
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    <div>
-        <label>Company Logo</label>
-        <input type="file" class="form-control" name="company_logo" id="company_logo">
     </div>
 
-    <button>Save</button>
-
-</form>
+    </div>
+  </section>
+  
 
 {% endblock content %}

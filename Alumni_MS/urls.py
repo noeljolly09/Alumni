@@ -18,6 +18,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('blog/',include('Blog.urls')),
     path('jobs/', include('Jobs.urls')),
+    path('events/',include('Events.urls')),
     url(r'^media/(?P<path>.*)$', serve,{'document_root':  settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 

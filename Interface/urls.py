@@ -18,6 +18,8 @@ urlpatterns = [
    path('', views.home, name='homepage'),
 
    path('userprofile',views.Profile,name='userprofile'),
+   path('about', views.about, name='about'),
+   path('contact', views.contact, name='contact'),
    
    #alumni part
    path('alumniDirectory', Alumnidirectory.as_view(), name= 'alumnidirectory'),

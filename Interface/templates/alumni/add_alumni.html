@@ -1,80 +1,114 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "basic.html" %}
 
 {% block title %}
 Add Alumni
 {% endblock title %}
 
-
-{% block css %}
-  
-<link rel="stylesheet" href="{% static 'style/basic_form.css' %}"> 
-
-{% endblock css %}
-
 {% block content %}
 
-<div class="testbox"></div>
-        <form method="POST" enctype="multipart/form-data">
-
-            {% csrf_token %}
-
-    
-            <div class="colums">
-                <div class="item">
-                <label> Name<span>*</span></label>
-                {{form.Name}}
-                </div>
-                
-                <div class="item">
-                <label>Profile image:</label>
-                {{form.Profile_image}}
-                </div>
-
-                <div class="item">
-                <label> Email<span>*</span></label>
-                {{form.Email}}
-                </div>
-                
-
-                <div class="item">
-                <label> Gender<span>*</span></label>
-                {{form.Gender}}
-                </div>
 
 
-                <div class="item">
-                <label> Birthdate<span>*(yyyy/mm/dd)</span></label>
-                {{form.Birthdate}}
-                </div>
+  <main id="main">
 
-                <div class="item">
-                <label> Address<span>*</span></label>
-                {{form.Address}}
-                </div>
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
 
-                <div class="item">
-                <label> Course<span>*</span></label>
-                {{form.Course}}
-                </div>
-        
-                <div class="item">
-                <label>Branch<span>*</span></label>
-                {{form.Branch}}
-                </div>
-                
-                <div class="item">
-                <label>Batch Year<span>*</span></label>
-                {{form.BatchYear}}
-                </div>
-
-            </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Alumni ADD</h2>
+          <ol>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'alumnidirectory' %}">Alumni Directory</a></li>
+            <li>Add Alumni</li>
+          </ol>
           
-            <div class="btn-block">
-                <button type="submit">Save</button>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+         <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+              <div class="card-heading"></div>
+
+                <div class="card-body">
+                    <h2 class="title">Alumni Add</h2>
+
+                    <form method="POST" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Name<span>*</span></label>
+                            {{form.Name}}
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Bio<span>*</span></label>
+                            {{form.Bio}}
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Email<span>* 	&nbsp;	&nbsp;</span></label>
+                            {{form.Email}}
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input--style-2"> Profile Image<span>*</span></label>
+                            {{form.Profile_image}}
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Designation<span>*</span></label>
+                            {{form.Designation}}
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2">Gender<span>*	&nbsp;	&nbsp;</span></label>
+                            {{form.Gender}}
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2">Birthdate<span>*</span></label>
+                            {{form.Birthdate}}
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2">Address<span>*	&nbsp;	&nbsp;</span></label>
+                            {{form.Address}}
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2">Phone Number<span>*</span></label>
+                            {{form.Phone_number}}
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2">Course<span>*	&nbsp;	&nbsp;</span></label>
+                            {{form.Course}}
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2">Branch<span>*	&nbsp;  &nbsp;</span></label>
+                            {{form.Branch}}
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2">BatchYear<span>*</span></label>
+                            {{form.BatchYear}}
+                        </div>
+
+
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
-</form>
+
+    </div>
+  </section>
+  
 
 {% endblock content %}

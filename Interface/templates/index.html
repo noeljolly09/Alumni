@@ -13,9 +13,6 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
-  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -40,7 +37,7 @@
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="{% url 'homepage'%}">Let's Connect </a></h1>
+      <h1 class="logo"><a href="{% url 'homepage'%}">Let's Connect</a></h1>
 
 
 
@@ -59,10 +56,10 @@
         <div class="carousel-inner" role="listbox">
 
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background: url(../../static/assets/img/slide/slide-1.jpg);">
+          <div class="carousel-item active" style="background: url(../../static/assets/img/slide/slide3.jpg)  ; ">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Grow Your Business</h2>
+                <h2 class="animate__animated animate__fadeInDown">Grow Your Connection</h2>
                 <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
                 <div>
                   <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
@@ -72,7 +69,7 @@
           </div>
 
           <!-- Slide 2 -->
-          <div class="carousel-item" style="background: url(../../static/assets/img/slide/slide-2.jpg);">
+          <div class="carousel-item" style="background: url(../../static/assets/img/slide/slide1.png);">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
@@ -85,8 +82,8 @@
           </div>
 
           <!-- Slide 3 -->
-          <div class="carousel-item" style="background: url(../../static/assets/img/slide/slide-3.jpg);">
-            <div class="carousel-background"><img src="{% static 'assets/img/slide/slide-3.jpg' %}" alt=""></div>
+          <div class="carousel-item" style="background: url(../../static/assets/img/slide/slide3.jpg);">
+            <div class="carousel-background"><img src="{% static 'assets/img/slide/slide2.jpg' %}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
@@ -122,29 +119,29 @@
           <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
           <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
             <div class="content d-flex flex-column justify-content-center">
-              <h3>Voluptatem dignissimos provident quasi</h3>
+              <h3>About US</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
               </p>
               <div class="row">
                 <div class="col-md-6 icon-box">
                   <i class="bx bx-receipt"></i>
-                  <h4>Corporis voluptates sit</h4>
+                  <h4>Connections</h4>
                   <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
                 </div>
                 <div class="col-md-6 icon-box">
                   <i class="bx bx-cube-alt"></i>
-                  <h4>Ullamco laboris nisi</h4>
+                  <h4>Opportunities</h4>
                   <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
                 </div>
                 <div class="col-md-6 icon-box">
                   <i class="bx bx-images"></i>
-                  <h4>Labore consequatur</h4>
+                  <h4>Graduates</h4>
                   <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
                 </div>
                 <div class="col-md-6 icon-box">
                   <i class="bx bx-shield"></i>
-                  <h4>Beatae veritatis</h4>
+                  <h4>Testimonials</h4>
                   <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
                 </div>
               </div>
@@ -168,29 +165,19 @@
 
         <div class="row">
 
-          <div class="col-lg-4">
-            <div class="box">
-              <span>01</span>
-              <h4>Lorem Ipsum</h4>
-              <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-            </div>
-          </div>
+          {% for x in home_events %}
 
-          <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="box">
-              <span>02</span>
-              <h4>Repellat Nihil</h4>
-              <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</p>
+            <div class="col-lg-4 mt-4 mt-lg-0">
+              <div class="box">
+                <span>{{ forloop.counter }}</span>
+                <h4>{{ x.event_name }}</h4>
+                <p>{{ x.event_description|slice:":100"}}</p>
+              </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="box">
-              <span>03</span>
-              <h4> Ad ad velit qui</h4>
-              <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
-            </div>
-          </div>
+          {% endfor %}
+
+
 
         </div>
 
@@ -284,9 +271,9 @@
             <div class="col-lg-4 col-md-6">
               <div class="box">
                   <a href="{% url 'blog_home' %}"><img class="img-fluid" src="{{ blog.image.url }}" alt=""></a>
-                  <li>TITLE: {{ blog.title }}</li>
-                  <li class="na">CREATED ON :{{ blog.created_on }}</li>
-                  <li class="na">CONTENT : {{blog.content|slice:":200" }}</li>
+                  <li>TITLE : &nbsp;{{ blog.title }}</li>
+                  <li class="na"> CREATED ON :&nbsp;{{ blog.created_on }}</li>
+                  <li class="na">CONTENT : &nbsp;{{blog.content|slice:":200" }}</li>
                 </ul>
                 <div class="btn-wrap">
                   <a href="{% url 'blog_home' %}" class="btn-buy">Read More</a>

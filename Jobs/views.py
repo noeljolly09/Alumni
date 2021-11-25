@@ -115,16 +115,20 @@ def availableJobApply(request, pk):
 
 @login_required
 def recuriterSignup(request):
+
+    user = User.objects.all()
+
     if request.method == 'POST':
-        user1 = request.user
+        user1 = request.POST['username']
         phone = request.POST['phone']
         gender = request.POST['gender']
         image = request.FILES['company_logo']
         company_name = request.POST['company_name']
 
-        company = Company.objects.create(user=user1, phone=phone, gender=gender, image=image, company_name=company_name, type="company", status="pending")
-        company.save()
-        return redirect('recruiter_profile')
+        if user1 == user.username:
+            company = Company.objects.create(user=user1, phone=phone, gender=gender, image=image, company_name=company_name, type="company", status="pending")
+            company.save()
+            return redirect('recruiter_profile')
     return render(request, 'jobs/recruiter_signup.html')
 
 @login_required

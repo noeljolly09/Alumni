@@ -1,3 +1,5 @@
+from django.contrib.auth import models
+from django.http.response import HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import AnonymousUser, User
@@ -7,7 +9,7 @@ from django.views.generic import detail
 from django.views.generic.detail import DetailView
 from Alumni_MS.decorators import user_is_alumni
 
-
+from Events.models import eventsData
 from Blog.models import Post
 from Interface.models import alumniData, gallery
 from Jobs.models import Job
@@ -21,6 +23,7 @@ def home(request):
     home_jobs = Job.objects.all()[:4]
     home_alumni = alumniData.objects.all()[:4]
     data = alumniData.objects.all().count()
+    home_events = eventsData.objects.all()[:3]
 
 
     context = {
@@ -29,10 +32,26 @@ def home(request):
             'home_jobs':home_jobs,
             'data':data,
             'home_alumni':home_alumni,
+            "home_events":home_events,
     }  
     return render(request, 'index.html',context)
 
 
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request,'contact.html')
+
+
+# def nav(request):
+#     alumni = alumniData.objects.filter(Email = request.user.email)
+#     print(alumni)
+
+#     if alumni.exists:
+#         created = True
+#         return render(request, 'nav.html',{'created':created})
+#     return redirect('homepage')
 
 ''' Gallery part'''
 

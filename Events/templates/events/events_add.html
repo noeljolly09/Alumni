@@ -1,0 +1,72 @@
+{% extends "basic.html" %}
+
+{% block title %}
+Add Events
+{% endblock title %}
+
+
+
+
+{% block content %}
+  
+  <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Add Events </h2>
+          
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+         <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+              <div class="card-heading"></div>
+
+                <div class="card-body">
+                    <h2 class="title">Events Form</h2>
+                    <form method="POST" enctype="multipart/form-data" >
+
+                        {% csrf_token %}
+
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Name<span>*</span></label>
+                            <input class="input--style-2" type="text"  name="name" >
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2"> Event Image<span>*</span></label>
+                            <input class="input--style-2" type="file"  name="image" >
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2"> Date<span>*</span></label>
+                            <input class="input--style-2" type="date"  name="date" >
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2"> Time<span>*</span></label>
+                            <input class="input--style-2" type="time"  name="time" >
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2"> Description<span>*</span></label>
+                            <input class="input--style-2" type="text"  name="description" >
+                        </div>
+
+                                
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </section>
+
+{% endblock content %}

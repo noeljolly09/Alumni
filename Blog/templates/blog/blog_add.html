@@ -1,64 +1,82 @@
-{% extends "base.html" %}
+{% extends "basic.html" %}
 {% load static %}
 
 {% block title %}
 Add Blog
 {% endblock title %}
 
-{% block css %}
-
-<link rel="stylesheet" href="{% static 'style/basic_form.css' %}"> 
-
-{% endblock css %}
 
 {% block content %}
-    
-    <div class="testbox"></div>
-        <form method="POST" enctype="multipart/form-data">
 
-            {% csrf_token %}
+<!-- ======= Breadcrumbs ======= -->
+     <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
 
-    
-            <div class="colums">
-                <div class="item">
-                <label> Title<span>*</span></label>
-                {{form.title}}
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Add Blog</h2>
+          <ol>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'blog_home' %}">Blogs</a></li>
+            <li>Add Blog</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+        <section class="inner-page">
+      <div class="container">
+         <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+              <div class="card-heading"></div>
+
+                <div class="card-body">
+                    <h2 class="title">Add Blog</h2>
+
+                    <form method="POST" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Title<span>*</span></label>
+                            {{form.title}}
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2"> SubTitle<span>*</span></label>
+                            {{form.slug}}
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Profile Image<span>*</span></label>
+                            {{form.image}}
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2"> Author<span>*</span></label>
+                            {{form.author}}
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input--style-2">Content<span>*	&nbsp;	&nbsp;</span></label>
+                            {{form.content}}
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2">Status<span>*</span></label>
+                            {{form.status}}
+                        </div>
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="item">
-                <label> Sub Title<span>*</span></label>
-                {{form.slug}}
-                </div>
-                
-                <div class="item">
-                <label>Profile image:</label>
-                {{form.image}}
-                </div>
-
-                <div class="item">
-                <label> Author<span>*</span></label>
-                {{form.author}}
-                </div>
-
-
-                <div class="item">
-                <label> Content<span>*</span></label>
-                {{form.content}}
-                </div>
-
-                <div class="item">
-                <label>Status<span>*</span></label>
-                {{form.status}}
-                </div>
-
             </div>
-          
-            <div class="btn-block">
-                <button type="submit">Save</button>
-            </div>
-        </form>
+        </div>
     </div>
-</form>
 
-
+    </div>
+  </section>
+    
 {% endblock content %}

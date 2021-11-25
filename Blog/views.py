@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models import fields
 from django.views import generic
 from django.shortcuts import render
-from django.views.generic.base import TemplateResponseMixin
 from .models import  Post
 from django.contrib.auth.mixins import LoginRequiredMixin
 

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "basic.html" %}
 
 {% block title %}
 Recruiter Update Profile
@@ -8,61 +8,96 @@ Recruiter Update Profile
 
 
 {% block content %}
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <img src="{{recruiter.image.url}}" alt="" width="200px" height="200px">
-    
-    <br>
-    <br>
-    <label>First Name</label>
-    <input type="text"  class="form-control mt-2" name="first_name" id="first_name" value="{{recruiter.user.first_name}}" required>
-    <br>
+  <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
 
-    <label>Last Name</label>
-    <input type="text" class="form-control mt-2" name="last_name" id="last_name" value="{{recruiter.user.last_name}}" required>
-    <br>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Recruiter Update Profile </h2>
+          <ol>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'recruiter_profile' %}">Recruiter Profile</a></li>
+            <li>Recruiter Update Profile </li>
+          </ol>
+        </div>
 
-    <label>Email Id</label>
-    <input type="email" class="form-control mt-2" name="email" id="email" value="{{recruiter.user.email}}" required>
-    <br>
+      </div>
+    </section><!-- End Breadcrumbs -->
 
-    <label>Contact Number</label>
-    <input type="tel" class="form-control mt-2" name="phone" id="phone" value="{{recruiter.phone}}" required>
+    <section class="inner-page">
+      <div class="container">
+         <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+              <div class="card-heading"></div>
 
-    <br>
+                <div class="card-body">
+                    <h2 class="title">Recruiter Update Details Form</h2>
+                    <form method="POST" enctype="multipart/form-data">
 
-    <label>Gender</label>
-                        {% if recruiter.gender == "Male" %}
-
-                        <div style="border: 1px solid lightgrey; padding: 5px; border-radius: 6px;">
-                            <div>
-                                <input type="radio" class="custom-control-input" name="gender" value="Male" checked>
-                                <label for="male" class="custom-control-label">Male</label>
-                            </div>
-                            <div>
-                                <input type="radio" class="custom-control-input" name="gender"
-                                    value="Female" >
-                                <label for="female" class="custom-control-label">Female</label>
-                            </div>
-                        </div>
-                        {%else %}
-
-                        <div style="border: 1px solid lightgrey; padding: 5px; border-radius: 6px;">
-                            <div>
-                                <input type="radio" class="custom-control-input" name="gender" value="Male" >
-                                <label for="male" class="custom-control-label">Male</label>
-                            </div>
-                            <div>
-                                <input type="radio" class="custom-control-input" name="gender"
-                                    value="Female" checked>
-                                <label for="female" class="custom-control-label">Female</label>
-                            </div>
+                        {% csrf_token %}
+                        
+                        <div class="input-group">
+                        <img src="{{recruiter.image.url}}" alt="" width="200px" height="200px">
                         </div>
 
-                        {% endif %}
-    <br>                        
-    <input type="submit" value="Submit" accept="image/*" style="background-color: #4f868c; color: white; font-size: larger; width: 8rem;">
+                        <div class="input-group">
+                            <label class="input--style-2"> First Name<span>*</span></label>
+                            <input class="input--style-2" type="text"  name="first_name" value="{{recruiter.user.first_name}}" required >
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input--style-2"> Last Name<span>*</span></label>
+                            <input class="input--style-2" type="text"  name="last_name" value="{{recruiter.user.last_name}}" required >
+                        </div>
 
+                        <div class="input-group">
+                            <label class="input--style-2"> Contact Number<span>*</span></label>
+                            <input class="input--style-2" type="tell"  name="phone" value="{{recruiter.phone}}" required >
+                        </div>
+                        <div class="input-group">
+                            <label class="input--style-2"> Email<span>*</span></label>
+                            <input class="input--style-2" type="text"  name="email" value="{{recruiter.user.email}}" required >
+                        </div>
+                        
+
+
+                        <div class="col-2">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <label for="gender"class="input--style-2"> Gender</label>
+
+
+                                    {% if recruiter.gender == "Male" %}
+
+                                        <select id="gender" name="gender">
+                                        <option value="Male" checked>Male</option>
+                                        <option value="Female">Female</option>
+                                        </select>
+                                    {% else %}
+                                        <select id="gender" name="gender">
+                                        <option value="Male" >Male</option>
+                                        <option value="Female" checked>Female</option>
+                                        </select>
+                                    {% endif %}
+                                    
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                                
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </section>
 {% endblock content %}
 
 

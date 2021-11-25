@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "basic.html" %}
 
 {% block title %}
 Job Opportunities
@@ -9,48 +9,54 @@ Job Opportunities
 
 {% block content %}
 
+  <main id="main">
+
+      <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Job Opportunities</h2>
+          <ol>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li>Job Opportunities</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
 
 
-<div class="container mt-4">
-    <table class="table table-hover" id="example">
-        <thead>
-            <tr>
-                <th>Sr.No</th>
-                <th>Company Name</th>
-                <th>Job Title</th>
-                <th>Salary</th>
-                <th>Location</th>
-                <th>Created On</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for job in jobs %}
-        <tr>
-            <td>{{forloop.counter}}</td>
-            <td>{{job.company.company_name}}</td>
-            <td>{{job.title}}</td>
-            <td>{{job.salary}}</td>
-            <td>{{job.location}}</td>
-            <td>{{job.creation_date}}</td>
-        </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <section class="inner-page">
+      <div class="container my-3 py-5 text-center">
 
-    
-    <!-- <a href="{% url 'applicant_profile' %}">Already an applicant</a> -->
-    <br>
-    <a href="{% url 'applicant_signup' %}">Become an Applicant</a>
-    <br>
-    <br>
-    <a href="{% url 'recruiter_signup' %}">Become a Recruiter</a>
-    <br>
-    <!-- <a href="{% url 'recruiter_profile' %}">Already a Recruiter</a> -->
-    
-</div>
+            {% if user.is_superuser %}
+              {% comment %} <a href="{% url 'recruiter_signup' %}" class="btn btn-primary">Create a Recruiter</a> {% endcomment %}
+            {% else %}
+              <a href="{% url 'applicant_signup' %}" class="btn btn-primary">Become an Applicant</a>     
+            {% endif %}
+             
 
+          <div class="row">
 
+                {% for job in jobs %}
 
+              <div class="col-lg-9 mx-auto my-4">
+                <div class="card align-left">
+                    <h4 class="card-header border-start border-end border-primary border-3 border-bottom-0">{{job.company.company_name}}</h4>
+                    <div class="card-body border-start border-end border-primary border-3">
+                        <h5 class="card-title">{{job.title}}</h5>
+                        <p class="card-text">{{job.description}}</p>
+                        <div class="my-2">
+                            <i class="bi bi-geo-alt-fill">{{job.location}}</i>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted  border-start border-end border-primary border-3 border-top-0">{{job.creation_date}}</div>
+                </div>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+    </section>
 
 
 {% endblock content %}

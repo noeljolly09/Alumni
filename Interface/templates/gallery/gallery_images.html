@@ -11,6 +11,20 @@ Gallery Images
 
 
  <main id="main">
+  
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Gallery Images</h2>
+          <ol>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li>Gallery Images</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
 
     
 
@@ -23,14 +37,14 @@ Gallery Images
           </div>
           <div class="container">
             <div class="col-xl-12">
-              <div class="row">
+              <div class="row"> 
 
                 {% for x in object_list %}
 
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 my-3">
                   <div class="card gallery-card rounded">
                     <div class="card-common">
-                      <img class="img-fluid" src="{{ x.image.url }}">
+                      <img class="img-fluid img-thumbnail" src="{{ x.image.url }}">
                     </div>
                   </div>
                 </div>

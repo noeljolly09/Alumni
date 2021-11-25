@@ -3,9 +3,9 @@ from Interface.models import alumniData,branchData,courseData, gallery
 
 
 class alumniDataAdmin(admin.ModelAdmin):
-    list_display = (('Name', 'Email', 'Course','Branch','BatchYear'))
-    list_filter = ('Course','Branch','BatchYear')
-    search_fields = ['Name', 'Email__email', 'Course__name','Branch__name','BatchYear']
+    list_display = (('Name','Designation', 'Email', 'Course','Branch','BatchYear'))
+    list_filter = ('Course','Branch','BatchYear','Designation')
+    search_fields = ['Name', 'Email__email', 'Course__name','Branch__name','BatchYear','Designation']
 
 
 

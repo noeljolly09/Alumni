@@ -1,40 +1,68 @@
-{% extends "base.html" %}
+{% extends "basic.html" %}
 
 {% block title %}
 Alumni Detail
 {% endblock title %}
 
-
-
-
 {% block content %}
-  
-<ul>
 
-    <h1>{{ object.Name }}<h1>
+
+
+  <main id="main">
+
     
-    {% if object.Profile_image%}
-        <img src="{{ object.Profile_image.url }}" alt="Profile_Photo" style="height: 10%;width: 20%;">
-    {% endif %}
-    
-    <h3> {{ object.Email.email}}</h3>
-    
-    <h3> {{ object.Gender}}</h3>
-    
-    <h3> {{ object.Birthdate}}</h3>
-    
-    <h3> {{ object.Address}}</h3>
-    
-    <h3> {{ object.Course}}</h3>
-    
-    <h3> {{ object.Branch}}</h3>
-    
-    <h3> {{ object.BatchYear}}</h3>
-    
-    </ul>
-    
+     <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Alumni Directory</h2>
+          <ol>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'alumnidirectory' %}">Alumni Directory</a></li>
+            <li>Alumni</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+
+    <section class="inner-page">
+      <div class="container my-3 py-5 text-center">
+            <div class="card mb-3 rounded-3 shadow p-3 mx-5" style="max-width: 1200px;" >
+                <div class="row g-0">
+                <div class="col-md-5 myLeftCtn">
+
+                    {% if object.Profile_image%}
+                        <img src="{{ object.Profile_image.url }}" class="img-fluid rounded-start" alt="Profile_Photo" >
+                    {% endif %}
+
+
+                </div>
+
+                <div class="col-md-7 myRightCtn">
+                        <div class="card-body">
+                            <h2 class="card-title my-3">{{ object.Name }}</h2>
+                            <h4 class="my-3">I am a {{ object.Designation }}</h4>
+                            <p class="card-text">{{ object.Bio}}</p>
+                            <p class="card-text"><small class="text-muted">{{ object.Email.email}}<br>{{ object.Phone_number}}</small></p> 
+
+                        </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
 
 {% endblock content %}
+
+
+
+
+
 
 
 
